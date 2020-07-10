@@ -156,7 +156,7 @@ main {
   -webkit-animation: moveIn 1s ease-in;
           animation: moveIn 1s ease-in;
   position: relative;
-  height: calc(80vh - 20px);
+  height: calc(80vh - 30px);
   padding-top: 10px;
 }
 
