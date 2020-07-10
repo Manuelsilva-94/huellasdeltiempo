@@ -232,7 +232,7 @@ main .slider .slider-3 {
 footer {
   position: relative;
   opacity: 0;
-  background: #fff;
+  background: blue;
   color: #000;
   margin-top: 20px;
   -webkit-animation: moveIn 1s ease-in forwards;
