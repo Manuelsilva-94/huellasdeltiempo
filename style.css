@@ -21,7 +21,6 @@ footer {
           align-items: center;
   -ms-flex-pack: distribute;
       justify-content: space-around;
-  overflow: hidden;
   z-index: 1;
   position: -webkit-sticky;
   position: sticky;
@@ -231,6 +230,7 @@ main .slider .slider-3 {
 }
 
 footer {
+  position: relative;
   opacity: 0;
   background: #fff;
   color: #000;

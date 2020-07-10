@@ -16,7 +16,6 @@ footer {
     display: flex;
     align-items: center;
     justify-content: space-around;
-    overflow: hidden;
     z-index: 1;
     position: sticky;
     top: 0;
@@ -172,6 +171,7 @@ main {
 }
 
 footer {
+    position: relative;
     opacity: 0;
     background: #fff;
     color: #000;
