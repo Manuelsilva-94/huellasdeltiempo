@@ -7,34 +7,6 @@
   text-decoration: none;
 }
 
-main {
-  background-image: -webkit-gradient(linear, left bottom, left top, from(#fddb92), to(#d1fdff));
-  background-image: linear-gradient(to top, #fddb92 0%, #d1fdff 100%);
-  background-repeat: no-repeat;
-  -webkit-animation: moveIn 1s ease-in;
-          animation: moveIn 1s ease-in;
-  position: relative;
-  padding-top: 10px;
-}
-
-@-webkit-keyframes moveIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes moveIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
 header,
 footer {
   background-color: #383838;
@@ -178,61 +150,28 @@ footer nav ul li img {
   margin-right: 5px;
 }
 
-.sillas {
-  opacity: 0;
-  -webkit-animation: opacity 0.5s ease-in 1s forwards;
-          animation: opacity 0.5s ease-in 1s forwards;
+main {
+  background-image: -webkit-gradient(linear, left bottom, left top, from(#fddb92), to(#d1fdff));
+  background-image: linear-gradient(to top, #fddb92 0%, #d1fdff 100%);
+  background-repeat: no-repeat;
+  -webkit-animation: moveIn 1s ease-in;
+          animation: moveIn 1s ease-in;
+  position: relative;
+  height: calc(80vh - 20px);
+  padding-top: 10px;
 }
 
-.mesas {
-  opacity: 0;
-  -webkit-animation: opacity 0.5s ease-in 1.5s forwards;
-          animation: opacity 0.5s ease-in 1.5s forwards;
+main .slider {
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  overflow: hidden;
 }
 
-.muebles {
-  opacity: 0;
-  -webkit-animation: opacity 0.5s ease-in 2s forwards;
-          animation: opacity 0.5s ease-in 2s forwards;
-}
-
-.accesorios {
-  opacity: 0;
-  -webkit-animation: opacity 0.5s ease-in 2.5s forwards;
-          animation: opacity 0.5s ease-in 2.5s forwards;
-}
-
-.footer {
-  opacity: 0;
-  -webkit-animation: opacity 0.5s ease-in 3s forwards;
-          animation: opacity 0.5s ease-in 3s forwards;
-}
-
-/*.tabs-container,
-footer {
-    opacity: 0;
-    animation: opacity 0.5s ease-in forwards;
-    animation-delay: 1s;
-}*/
-@-webkit-keyframes opacity {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-@keyframes opacity {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-.tabs {
-  padding: 10px;
+main .slider a {
+  height: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -240,43 +179,63 @@ footer {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  text-decoration: none;
-  color: #000;
-  -webkit-box-shadow: 0 5px 10px -5px #7e7e7e;
-          box-shadow: 0 5px 10px -5px #7e7e7e;
-  margin: 10px;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
-.tabs .texto {
-  margin: 10px auto;
-}
-
-.tabs h2 {
-  text-align: center;
-}
-
-.tabs .slider {
-  height: 200px;
-  text-align: center;
-}
-
-.tabs .slider img {
+main .slider a img {
   max-width: 100%;
-  max-height: 100%;
 }
 
-.sillas,
-.muebles {
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: reverse;
-      -ms-flex-direction: column-reverse;
-          flex-direction: column-reverse;
+main .slider a p {
+  text-align: center;
+  color: #000;
+}
+
+main .slider a p:last-child {
+  padding: 12px 24px;
+  background: #fff;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+main .slider .slider-2,
+main .slider .slider-3 {
+  position: absolute;
+  left: 100%;
+}
+
+@-webkit-keyframes moveIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes moveIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 footer {
+  opacity: 0;
   background: #fff;
   color: #000;
   margin-top: 20px;
+  -webkit-animation: moveIn 1s ease-in forwards;
+          animation: moveIn 1s ease-in forwards;
 }
 
 footer ul {
@@ -309,16 +268,6 @@ footer img {
 }
 
 @media screen and (min-width: 750px) {
-  .tabs-container {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-  }
-  .tabs-container .tabs {
-    width: 47%;
-  }
   footer ul:first-child {
     font-size: 14px;
   }

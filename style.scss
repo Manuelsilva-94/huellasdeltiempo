@@ -6,23 +6,6 @@
     text-decoration: none;
 }
 
-main {
-    background-image: linear-gradient(to top, #fddb92 0%, #d1fdff 100%);
-    background-repeat: no-repeat;
-    animation: moveIn 1s ease-in;
-    position: relative;
-    padding-top: 10px;
-}
-
-@keyframes moveIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
 header,
 footer {
     background-color: rgb(56, 56, 56);
@@ -129,85 +112,70 @@ footer {
     }
 }
 
-.sillas {
-    opacity: 0;
-    animation: opacity 0.5s ease-in 1s forwards;
+main {
+    background-image: linear-gradient(to top, #fddb92 0%, #d1fdff 100%);
+    background-repeat: no-repeat;
+    animation: moveIn 1s ease-in;
+    position: relative;
+    height: calc(80vh - 20px);
+    padding-top: 10px;
+
+    .slider {
+        height: 100%;
+        display: flex;
+        position: relative;
+        overflow: hidden;
+
+        a {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+
+            img {
+                max-width: 100%;
+            }
+
+            p {
+                text-align: center;
+                color: #000;
+            }
+
+            p:last-child {
+                padding: 12px 24px;
+                background: #fff;
+                border-radius: 5px;
+                font-weight: bold;
+            }
+        }
+
+        .slider-2,
+        .slider-3 {
+            position: absolute;
+            left: 100%;
+        }
+    }
 }
 
-.mesas {
-    opacity: 0;
-    animation: opacity 0.5s ease-in 1.5s forwards;
-}
-
-.muebles {
-    opacity: 0;
-    animation: opacity 0.5s ease-in 2s forwards;
-}
-
-.accesorios {
-    opacity: 0;
-    animation: opacity 0.5s ease-in 2.5s forwards;
-}
-
-.footer {
-    opacity: 0;
-    animation: opacity 0.5s ease-in 3s forwards;
-}
-
-/*.tabs-container,
-footer {
-    opacity: 0;
-    animation: opacity 0.5s ease-in forwards;
-    animation-delay: 1s;
-}*/
-
-@keyframes opacity {
-    0% {
+@keyframes moveIn {
+    from {
         opacity: 0;
     }
-
-    100% {
+    to {
         opacity: 1;
     }
 }
 
-.tabs {
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    text-decoration: none;
-    color: #000;
-    box-shadow: 0 5px 10px -5px #7e7e7e;
-    margin: 10px;
-
-    .texto {
-        margin: 10px auto;
-    }
-
-    h2 {
-        text-align: center;
-    }
-
-    .slider {
-        height: 200px;
-        text-align: center;
-    }
-
-    .slider img {
-        max-width: 100%;
-        max-height: 100%;
-    }
-}
-
-.sillas,
-.muebles {
-    flex-direction: column-reverse;
-}
-
 footer {
+    opacity: 0;
     background: #fff;
     color: #000;
     margin-top: 20px;
+    animation: moveIn 1s ease-in forwards;
 
     ul {
         list-style: none;
@@ -234,15 +202,6 @@ footer {
 }
 
 @media screen and (min-width: 750px) {
-    .tabs-container {
-        display: flex;
-        flex-wrap: wrap;
-
-        .tabs {
-            width: 47%;
-        }
-    }
-
     footer ul:first-child {
         font-size: 14px;
     }
