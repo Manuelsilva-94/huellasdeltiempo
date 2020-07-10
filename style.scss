@@ -1,0 +1,249 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: montserrat;
+    text-decoration: none;
+}
+
+main {
+    background-image: linear-gradient(to top, #fddb92 0%, #d1fdff 100%);
+    background-repeat: no-repeat;
+    animation: moveIn 1s ease-in;
+    position: relative;
+    padding-top: 10px;
+}
+
+@keyframes moveIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+header,
+footer {
+    background-color: rgb(56, 56, 56);
+    color: #fff;
+    height: 10vh;
+    width: 100%;
+    //position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    overflow: hidden;
+    z-index: 1;
+    position: sticky;
+    top: 0;
+
+    h1 {
+        font-size: 24px;
+    }
+
+    .burger-container {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 30px;
+        height: 30px;
+        right: 0;
+        top: 0;
+        cursor: pointer;
+        transition: all ease-in-out 0.5s;
+
+        .burger {
+            height: 3px;
+            width: 20px;
+            background: #fff;
+            border-radius: 4px;
+            transition: all ease-in-out 0.5s;
+
+            &::before {
+                @extend .burger;
+                content: "";
+                position: absolute;
+                transform: translateY(-8px);
+            }
+
+            &::after {
+                @extend .burger;
+                content: "";
+                position: absolute;
+                transform: translateY(8px);
+            }
+        }
+    }
+
+    .burger-container.burger-open .burger {
+        width: 0;
+        height: 0;
+
+        &::before {
+            transform: rotate(45deg) translate(-8px, 6px);
+            height: 3px;
+            width: 20px;
+        }
+
+        &::after {
+            transform: rotate(-45deg) translate(-6px, -8px);
+            height: 3px;
+            width: 20px;
+        }
+    }
+
+    nav {
+        position: fixed;
+        top: 10vh;
+        right: -60%;
+        bottom: 0;
+        z-index: 2;
+        background: rgba(56, 56, 56, 0.9);
+        color: #000;
+        width: 60%;
+        transition: all ease-in 0.5s;
+        max-width: 350px;
+
+        ul {
+            list-style: none;
+            padding: 20px;
+
+            li {
+                height: 50px;
+
+                a {
+                    height: 100%;
+                    color: #fff;
+                    display: flex;
+                    align-items: center;
+                }
+
+                img {
+                    width: 20px;
+                    margin-right: 5px;
+                }
+            }
+        }
+    }
+}
+
+.sillas {
+    opacity: 0;
+    animation: opacity 0.5s ease-in 1s forwards;
+}
+
+.mesas {
+    opacity: 0;
+    animation: opacity 0.5s ease-in 1.5s forwards;
+}
+
+.muebles {
+    opacity: 0;
+    animation: opacity 0.5s ease-in 2s forwards;
+}
+
+.accesorios {
+    opacity: 0;
+    animation: opacity 0.5s ease-in 2.5s forwards;
+}
+
+.footer {
+    opacity: 0;
+    animation: opacity 0.5s ease-in 3s forwards;
+}
+
+/*.tabs-container,
+footer {
+    opacity: 0;
+    animation: opacity 0.5s ease-in forwards;
+    animation-delay: 1s;
+}*/
+
+@keyframes opacity {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.tabs {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: #000;
+    box-shadow: 0 5px 10px -5px #7e7e7e;
+    margin: 10px;
+
+    .texto {
+        margin: 10px auto;
+    }
+
+    h2 {
+        text-align: center;
+    }
+
+    .slider {
+        height: 200px;
+        text-align: center;
+    }
+
+    .slider img {
+        max-width: 100%;
+        max-height: 100%;
+    }
+}
+
+.sillas,
+.muebles {
+    flex-direction: column-reverse;
+}
+
+footer {
+    background: #fff;
+    color: #000;
+    margin-top: 20px;
+
+    ul {
+        list-style: none;
+        display: flex;
+        font-size: 12px;
+        width: 60%;
+    }
+
+    .redes-sociales {
+        width: 40%;
+        max-width: 200px;
+        justify-content: space-around;
+    }
+
+    ul:first-child {
+        margin-left: 5px;
+        flex-direction: column;
+    }
+
+    img {
+        width: 30px;
+        height: 30px;
+    }
+}
+
+@media screen and (min-width: 750px) {
+    .tabs-container {
+        display: flex;
+        flex-wrap: wrap;
+
+        .tabs {
+            width: 47%;
+        }
+    }
+
+    footer ul:first-child {
+        font-size: 14px;
+    }
+}
