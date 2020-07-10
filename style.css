@@ -171,6 +171,7 @@ main .slider {
 }
 
 main .slider a {
+  width: 100%;
   height: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -190,7 +191,7 @@ main .slider a {
 }
 
 main .slider a img {
-  max-width: 100%;
+  max-width: 375px;
 }
 
 main .slider a p {
