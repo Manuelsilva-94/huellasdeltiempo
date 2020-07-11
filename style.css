@@ -158,14 +158,21 @@ main {
   position: relative;
   height: calc(75vh - 30px);
   padding-top: 10px;
+  overflow: hidden;
 }
 
 main .slider {
+  opacity: 0;
   height: 100%;
+  -webkit-animation: moveIn 0.5s ease-in 0.5s forwards;
+          animation: moveIn 0.5s ease-in 0.5s forwards;
+  width: 85%;
+  margin: 0 auto;
 }
 
 main .slider div {
   height: 100%;
+  width: 100%;
 }
 
 main .slider div * {
@@ -215,6 +222,7 @@ footer {
   margin-top: 20px;
   -webkit-animation: moveIn 1s ease-in forwards;
           animation: moveIn 1s ease-in forwards;
+  z-index: -1;
 }
 
 footer ul {
