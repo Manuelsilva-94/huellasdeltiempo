@@ -3,6 +3,7 @@ $(document).ready(function () {
         dots: true,
         arrows: true,
         mobileFirst: true,
+        //autoplay: true,
     });
 });
 
@@ -22,5 +23,23 @@ burgerContainer.addEventListener("click", () => {
         header.style.overflow = "hidden";
         burgerContainer.classList.remove("burger-open");
         navOpen = false;
+    }
+});
+
+//var vpWidth = document.documentElement.clientWidth;
+//var slider = document.querySelector(".slider");
+
+jQuery(window).on("resize", function () {
+    var viewportWidth = jQuery(window).width();
+
+    if (viewportWidth >= 1200) {
+        $(".slider").slick("unslick");
+    } else {
+        $(".slider").slick({
+            dots: true,
+            arrows: true,
+            mobileFirst: true,
+            //autoplay: true,
+        });
     }
 });

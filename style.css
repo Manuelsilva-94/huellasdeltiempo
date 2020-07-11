@@ -161,7 +161,8 @@ main {
   overflow: hidden;
 }
 
-main .slider {
+main .slider,
+main .slider-desktop {
   opacity: 0;
   height: 100%;
   -webkit-animation: moveIn 0.5s ease-in 0.5s forwards;
@@ -170,25 +171,30 @@ main .slider {
   margin: 0 auto;
 }
 
-main .slider div {
+main .slider div:first-child,
+main .slider-desktop div:first-child {
   height: 100%;
   width: 100%;
 }
 
-main .slider div * {
+main .slider div:first-child *,
+main .slider-desktop div:first-child * {
   margin: 20px auto;
   text-align: center;
 }
 
-main .slider div img {
+main .slider div:first-child img,
+main .slider-desktop div:first-child img {
   max-width: 250px;
 }
 
-main .slider div p {
+main .slider div:first-child p,
+main .slider-desktop div:first-child p {
   color: #000;
 }
 
-main .slider div a:last-child {
+main .slider div:first-child a:last-child,
+main .slider-desktop div:first-child a:last-child {
   color: #000;
   padding: 12px 24px;
   background: #fff;
@@ -198,6 +204,12 @@ main .slider div a:last-child {
 
 .slick-dots {
   bottom: 10px;
+}
+
+.slick-prev,
+.slick-next {
+  height: 40%;
+  width: 30px;
 }
 
 @-webkit-keyframes moveIn {
@@ -259,6 +271,68 @@ footer img {
 }
 
 @media screen and (min-width: 750px) {
+  header {
+    height: auto;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    padding: 10px;
+  }
+  header .burger-container {
+    display: none;
+  }
+  header nav {
+    right: 0;
+    top: 0;
+    max-width: none;
+    width: 100%;
+    position: relative;
+  }
+  header nav ul {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    padding: 0;
+  }
+  .slick-list {
+    height: 100%;
+  }
+  .slick-track {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .slider div,
+  .slider-desktop div {
+    display: -webkit-box !important;
+    display: -ms-flexbox !important;
+    display: flex !important;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .slider div .texto,
+  .slider-desktop div .texto {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  main .slider-desktop div:first-child p {
+    width: 90%;
+  }
+  main .slider-desktop div:first-child img {
+    max-width: 300px;
+  }
   footer ul:first-child {
     font-size: 14px;
   }

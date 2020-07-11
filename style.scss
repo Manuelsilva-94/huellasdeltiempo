@@ -120,13 +120,15 @@ main {
     padding-top: 10px;
     overflow: hidden;
 
-    .slider {
+    .slider,
+    .slider-desktop {
         opacity: 0;
         height: 100%;
         animation: moveIn 0.5s ease-in 0.5s forwards;
         width: 85%;
         margin: 0 auto;
-        div {
+
+        div:first-child {
             height: 100%;
             width: 100%;
 
@@ -156,6 +158,12 @@ main {
 
 .slick-dots {
     bottom: 10px;
+}
+
+.slick-prev,
+.slick-next {
+    height: 40%;
+    width: 30px;
 }
 
 @keyframes moveIn {
@@ -201,6 +209,60 @@ footer {
 }
 
 @media screen and (min-width: 750px) {
+    header {
+        height: auto;
+        flex-direction: column;
+        padding: 10px;
+
+        .burger-container {
+            display: none;
+        }
+
+        nav {
+            right: 0;
+            top: 0;
+            max-width: none;
+            width: 100%;
+            position: relative;
+
+            ul {
+                display: flex;
+                justify-content: space-around;
+                padding: 0;
+            }
+        }
+    }
+
+    .slick-list {
+        height: 100%;
+    }
+
+    .slick-track {
+        display: flex;
+        align-items: center;
+    }
+
+    .slider,
+    .slider-desktop {
+        div {
+            display: flex !important;
+            align-items: center;
+
+            .texto {
+                display: flex;
+                flex-direction: column;
+            }
+        }
+    }
+
+    main .slider-desktop div:first-child p {
+        width: 90%;
+    }
+
+    main .slider-desktop div:first-child img {
+        max-width: 300px;
+    }
+
     footer ul:first-child {
         font-size: 14px;
     }
