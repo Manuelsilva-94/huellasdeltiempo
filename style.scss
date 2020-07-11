@@ -121,43 +121,29 @@ main {
 
     .slider {
         height: 100%;
-        display: flex;
-        position: relative;
-        overflow: hidden;
+        div {
+            height: 100%;
 
-        a {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-around;
-            align-items: center;
-            position: absolute;
-            top: 0;
-            left: 0;
+            * {
+                margin: 20px auto;
+                text-align: center;
+            }
 
             img {
                 max-width: 250px;
-                margin-bottom: 20px;
             }
 
             p {
-                margin-bottom: 20px;
-                text-align: center;
                 color: #000;
             }
 
-            p:last-child {
+            a:last-child {
+                color: #000;
                 padding: 12px 24px;
                 background: #fff;
                 border-radius: 5px;
                 font-weight: bold;
             }
-        }
-
-        .slider-2,
-        .slider-3 {
-            position: absolute;
-            left: 100%;
         }
     }
 }
