@@ -196,6 +196,10 @@ main .slider div a:last-child {
   font-weight: bold;
 }
 
+.slick-dots {
+  bottom: 10px;
+}
+
 @-webkit-keyframes moveIn {
   from {
     opacity: 0;

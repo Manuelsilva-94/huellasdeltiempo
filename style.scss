@@ -154,6 +154,10 @@ main {
     }
 }
 
+.slick-dots {
+    bottom: 10px;
+}
+
 @keyframes moveIn {
     from {
         opacity: 0;
