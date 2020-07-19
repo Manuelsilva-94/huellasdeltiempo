@@ -1,3 +1,4 @@
+var viewportWidth = jQuery(window).width();
 $(document).ready(function () {
     $(".slider").slick({
         dots: true,
@@ -5,6 +6,10 @@ $(document).ready(function () {
         mobileFirst: true,
         //autoplay: true,
     });
+
+    /*if (viewportWidth >= 1200) {
+        $(".slider").slick("unslick");
+    }*/
 });
 
 var burgerContainer = document.querySelector(".burger-container"),
@@ -26,20 +31,18 @@ burgerContainer.addEventListener("click", () => {
     }
 });
 
-//var vpWidth = document.documentElement.clientWidth;
-//var slider = document.querySelector(".slider");
+var productos = document.querySelectorAll(".productos > li");
 
-jQuery(window).on("resize", function () {
-    var viewportWidth = jQuery(window).width();
+for (let i = 0; i < productos.length; i++) {
+    productos[i].addEventListener("click", function () {
+        productos[i].lastElementChild.classList.add("slider-active");
 
-    if (viewportWidth >= 1200) {
-        $(".slider").slick("unslick");
-    } else {
-        $(".slider").slick({
+        productos[i].lastElementChild.style.display = "flex";
+
+        $(".img-slider").slick({
             dots: true,
             arrows: true,
-            mobileFirst: true,
-            //autoplay: true,
+            adaptiveHeight: true,
         });
-    }
-});
+    });
+}

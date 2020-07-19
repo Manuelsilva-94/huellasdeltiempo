@@ -4,6 +4,7 @@
     box-sizing: border-box;
     font-family: montserrat;
     text-decoration: none;
+    list-style: none;
 }
 
 header,
@@ -120,6 +121,11 @@ main {
     padding-top: 10px;
     overflow: hidden;
 
+    .slider .slick-track {
+        height: 100%;
+        width: 100%;
+    }
+
     .slider,
     .slider-desktop {
         opacity: 0;
@@ -128,10 +134,7 @@ main {
         width: 85%;
         margin: 0 auto;
 
-        div:first-child {
-            height: 100%;
-            width: 100%;
-
+        div {
             * {
                 margin: 20px auto;
                 text-align: center;
@@ -156,12 +159,12 @@ main {
     }
 }
 
-.slick-dots {
+.slider .slick-dots {
     bottom: 10px;
 }
 
-.slick-prev,
-.slick-next {
+.slider .slick-prev,
+.slider .slick-next {
     height: 40%;
     width: 30px;
 }
@@ -170,6 +173,7 @@ main {
     from {
         opacity: 0;
     }
+
     to {
         opacity: 1;
     }
@@ -205,6 +209,137 @@ footer {
     img {
         width: 30px;
         height: 30px;
+    }
+}
+
+/*-------------------Productos-----------------------*/
+
+.products-main {
+    padding: 0;
+    overflow: visible;
+    height: auto;
+    background: none;
+
+    .filtro-container {
+        display: flex;
+        justify-content: space-around;
+        background: #fff;
+        padding: 10px 0;
+
+        >div {
+            width: 45%;
+            text-align: center;
+            height: 40px;
+            line-height: 40px;
+            border: 1px solid;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .orden {
+            display: none;
+            opacity: 0;
+
+            ul {
+                li {
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+
+    .filtros {
+        text-transform: capitalize;
+        width: 50%;
+        height: 100%;
+        position: absolute;
+        display: none;
+    }
+
+    .productos {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        margin-top: 20px;
+
+        >li {
+            width: 45%;
+            margin: 20px auto;
+            border-radius: 5px;
+
+            >img {
+                max-width: 100%;
+                height: 200px;
+                width: 215px;
+                object-fit: cover;
+                border-radius: 5px;
+            }
+
+            h2 {
+                font-size: 18px;
+                min-height: 50px;
+            }
+
+            >p:first-of-type {
+                display: none;
+            }
+
+            .precio {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                p {
+                    font-weight: bold;
+                }
+
+                a {
+                    border: 1px solid;
+                    padding: 12px;
+                    border-radius: 5px;
+                    background: #383838;
+                    color: #fff;
+                    border: 1px solid;
+                    padding: 12px;
+                    border-radius: 5px;
+                    background: #383838;
+                    color: #fff;
+                }
+            }
+
+            >div:last-child {
+                display: none;
+            }
+        }
+    }
+}
+
+.products-main .productos li .slider-active {
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.7);
+    height: 90vh;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+
+    .img-slider-cont {
+        width: 85%;
+    }
+
+    .img-slider {
+        width: 100%;
+    }
+
+    .slick-next {
+        right: 0;
+    }
+
+    .slick-prev {
+        left: 0;
+        z-index: 2;
     }
 }
 
@@ -255,15 +390,30 @@ footer {
         }
     }
 
-    main .slider-desktop div:first-child p {
+    main .slider-desktop div p {
         width: 90%;
     }
 
-    main .slider-desktop div:first-child img {
+    main .slider-desktop div img {
         max-width: 300px;
     }
 
     footer ul:first-child {
         font-size: 14px;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    header {
+        flex-direction: row;
+        justify-content: space-around;
+
+        nav {
+            max-width: 700px;
+        }
+    }
+
+    main {
+        height: calc(80vh - 30px);
     }
 }
