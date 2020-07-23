@@ -332,6 +332,33 @@ footer img {
   border-radius: 5px;
 }
 
+.products-main .productos > li .slider-for img {
+  max-width: 100%;
+  height: 200px;
+  width: 215px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 5px;
+}
+
+.products-main .productos > li .slider-nav .slick-next {
+  right: 0px;
+}
+
+.products-main .productos > li .slider-nav .slick-prev {
+  left: 0;
+  z-index: 1;
+}
+
+.products-main .productos > li .slider-nav .slick-slide img {
+  height: 80px;
+  width: 95%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 5px;
+  margin: 5px 0;
+}
+
 .products-main .productos > li > img {
   max-width: 100%;
   height: 200px;
@@ -377,10 +404,6 @@ footer img {
   border-radius: 5px;
   background: #383838;
   color: #fff;
-}
-
-.products-main .productos > li > div:last-child {
-  display: none;
 }
 
 .products-main .productos li .slider-active {

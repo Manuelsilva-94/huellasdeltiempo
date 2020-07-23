@@ -7,6 +7,8 @@ $(document).ready(function () {
         //autoplay: true,
     });
 
+
+
     /*if (viewportWidth >= 1200) {
         $(".slider").slick("unslick");
     }*/
@@ -31,18 +33,20 @@ burgerContainer.addEventListener("click", () => {
     }
 });
 
-var productos = document.querySelectorAll(".productos > li");
 
-for (let i = 0; i < productos.length; i++) {
-    productos[i].addEventListener("click", function () {
-        productos[i].lastElementChild.classList.add("slider-active");
 
-        productos[i].lastElementChild.style.display = "flex";
+$('.slider-for').slick({
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: false,
+    fade: true,
+    asNavFor: '.slider-nav',
 
-        $(".img-slider").slick({
-            dots: true,
-            arrows: true,
-            adaptiveHeight: true,
-        });
-    });
-}
+});
+$('.slider-nav').slick({
+    slidesToShow: 2,
+    slidesToScroll: 1,
+    asNavFor: '.slider-for',
+    dots: false,
+    focusOnSelect: true,
+});
