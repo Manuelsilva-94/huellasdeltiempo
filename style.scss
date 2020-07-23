@@ -17,7 +17,7 @@ footer {
     display: flex;
     align-items: center;
     justify-content: space-around;
-    z-index: 1;
+    z-index: 3;
     position: sticky;
     top: 0;
 
@@ -226,7 +226,7 @@ footer {
         background: #fff;
         padding: 10px 0;
 
-        > div {
+        >div {
             width: 45%;
             text-align: center;
             height: 40px;
@@ -256,13 +256,45 @@ footer {
         display: none;
     }
 
+    .popup-img {
+        display: none;
+        position: absolute;
+        z-index: 2;
+        align-items: center;
+        justify-content: center;
+        height: 90vh;
+        background: rgba(0, 0, 0, .7);
+
+        div {
+            position: absolute;
+            top: 5%;
+            right: 20px;
+            height: 3px;
+            width: 20px;
+            background: #fff;
+            transform: rotate(45deg);
+
+
+            &::after {
+                @extend div;
+                content: '';
+                transform: rotate(90deg) translate(0px, -20px);
+            }
+        }
+
+        img {
+            max-width: 100%;
+            max-height: 95%;
+        }
+    }
+
     .productos {
         display: flex;
         flex-wrap: wrap;
         justify-content: space-around;
         margin-top: 20px;
 
-        > li {
+        >li {
             width: 45%;
             margin: 20px auto;
             border-radius: 5px;
@@ -298,7 +330,7 @@ footer {
                 }
             }
 
-            > img {
+            >img {
                 max-width: 100%;
                 height: 200px;
                 width: 215px;
@@ -311,7 +343,7 @@ footer {
                 min-height: 50px;
             }
 
-            > p:first-of-type {
+            >p:first-of-type {
                 display: none;
             }
 
