@@ -126,15 +126,21 @@ main {
         width: 100%;
     }
 
-    .slider,
-    .slider-desktop {
+    .slider {
         opacity: 0;
         height: 100%;
         animation: moveIn 0.5s ease-in 0.5s forwards;
         width: 85%;
         margin: 0 auto;
 
-        div {
+        .slider-item {
+
+            display: flex;
+            height: 100%;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
             * {
                 margin: 20px auto;
                 text-align: center;
@@ -234,26 +240,88 @@ footer {
             border: 1px solid;
             border-radius: 5px;
             font-weight: bold;
-        }
 
-        .orden {
-            display: none;
-            opacity: 0;
-
-            ul {
-                li {
-                    font-size: 14px;
-                }
+            &:active {
+                background: #000;
+                color: #fff;
             }
         }
+
+
+    }
+
+    .orden {
+        position: absolute;
+        right: 0;
+        width: 50%;
+        z-index: 1;
+        background: #fff;
+        padding-bottom: 15px;
+        transform: translateX(100%);
+        transition: transform .3s ease;
+
+        ul {
+            li {
+                font-size: 14px;
+                padding: 10px;
+            }
+        }
+    }
+
+    .orden-show {
+        transform: translateX(0);
     }
 
     .filtros {
         text-transform: capitalize;
         width: 50%;
-        height: 100%;
+        min-height: 100vh;
         position: absolute;
-        display: none;
+        z-index: 3;
+        background: #fff;
+        transform: translateX(-100%);
+        transition: all .3s ease-in;
+
+        .cont-filtros {
+            padding: 10px;
+
+            .tipo,
+            .material,
+            .descuento {
+                margin: 10px 0;
+
+                &::after {
+                    content: '';
+                    display: block;
+                    height: 2px;
+                    width: 50%;
+                    background: #000;
+                }
+
+                h3,
+                p {
+                    padding: 5px 0;
+                }
+            }
+        }
+
+        button {
+            color: #fff;
+            background-color: #383838;
+            border-radius: 5px;
+            outline: 0;
+            border: 1px solid;
+            padding: 0 24px;
+            height: 44px;
+            line-height: 44px;
+            text-align: center;
+            margin: 0 auto;
+            display: block;
+        }
+    }
+
+    .filtros-show {
+        transform: translateX(0);
     }
 
     .popup-img {
@@ -303,9 +371,10 @@ footer {
                 img {
                     max-width: 100%;
                     height: 200px;
-                    width: 215px;
+                    width: 100%;
                     object-fit: cover;
                     border-radius: 5px;
+                    margin: 0 auto;
                 }
             }
 
@@ -325,7 +394,7 @@ footer {
                         width: 95%;
                         object-fit: cover;
                         border-radius: 5px;
-                        margin: 5px 0;
+                        margin: 5px auto;
                     }
                 }
             }
@@ -436,15 +505,15 @@ footer {
         align-items: center;
     }
 
-    .slider,
-    .slider-desktop {
-        div {
-            display: flex !important;
-            align-items: center;
+    main {
+        .slider {
+            .slider-item {
+                flex-direction: row;
 
-            .texto {
-                display: flex;
-                flex-direction: column;
+                .texto {
+                    display: flex;
+                    flex-direction: column;
+                }
             }
         }
     }
@@ -455,6 +524,11 @@ footer {
 
     main .slider-desktop div img {
         max-width: 300px;
+    }
+
+    /*Productos*/
+    .products-main .productos>li {
+        width: 30%;
     }
 
     footer ul:first-child {
@@ -474,5 +548,10 @@ footer {
 
     main {
         height: calc(80vh - 30px);
+    }
+
+    /*Productos*/
+    .products-main .productos>li {
+        width: 23%;
     }
 }

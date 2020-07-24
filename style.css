@@ -167,8 +167,7 @@ main .slider .slick-track {
   width: 100%;
 }
 
-main .slider,
-main .slider-desktop {
+main .slider {
   opacity: 0;
   height: 100%;
   -webkit-animation: moveIn 0.5s ease-in 0.5s forwards;
@@ -177,32 +176,37 @@ main .slider-desktop {
   margin: 0 auto;
 }
 
-main .slider div *, main .slider .products-main .popup-img div::after *, .products-main .popup-img main .slider div::after *,
-main .slider-desktop div *,
-main .slider-desktop .products-main .popup-img div::after *,
-.products-main .popup-img main .slider-desktop div::after * {
+main .slider .slider-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+main .slider .slider-item * {
   margin: 20px auto;
   text-align: center;
 }
 
-main .slider div img, main .slider .products-main .popup-img div::after img, .products-main .popup-img main .slider div::after img,
-main .slider-desktop div img,
-main .slider-desktop .products-main .popup-img div::after img,
-.products-main .popup-img main .slider-desktop div::after img {
+main .slider .slider-item img {
   max-width: 250px;
 }
 
-main .slider div p, main .slider .products-main .popup-img div::after p, .products-main .popup-img main .slider div::after p,
-main .slider-desktop div p,
-main .slider-desktop .products-main .popup-img div::after p,
-.products-main .popup-img main .slider-desktop div::after p {
+main .slider .slider-item p {
   color: #000;
 }
 
-main .slider div a:last-child, main .slider .products-main .popup-img div::after a:last-child, .products-main .popup-img main .slider div::after a:last-child,
-main .slider-desktop div a:last-child,
-main .slider-desktop .products-main .popup-img div::after a:last-child,
-.products-main .popup-img main .slider-desktop div::after a:last-child {
+main .slider .slider-item a:last-child {
   color: #000;
   padding: 12px 24px;
   background: #fff;
@@ -306,21 +310,95 @@ footer img {
   font-weight: bold;
 }
 
-.products-main .filtro-container .orden {
-  display: none;
-  opacity: 0;
+.products-main .filtro-container > div:active, .products-main .popup-img .filtro-container > div:active::after {
+  background: #000;
+  color: #fff;
 }
 
-.products-main .filtro-container .orden ul li {
+.products-main .orden {
+  position: absolute;
+  right: 0;
+  width: 50%;
+  z-index: 1;
+  background: #fff;
+  padding-bottom: 15px;
+  -webkit-transform: translateX(100%);
+          transform: translateX(100%);
+  -webkit-transition: -webkit-transform .3s ease;
+  transition: -webkit-transform .3s ease;
+  transition: transform .3s ease;
+  transition: transform .3s ease, -webkit-transform .3s ease;
+}
+
+.products-main .orden ul li {
   font-size: 14px;
+  padding: 10px;
+}
+
+.products-main .orden-show {
+  -webkit-transform: translateX(0);
+          transform: translateX(0);
 }
 
 .products-main .filtros {
   text-transform: capitalize;
   width: 50%;
-  height: 100%;
+  min-height: 100vh;
   position: absolute;
-  display: none;
+  z-index: 3;
+  background: #fff;
+  -webkit-transform: translateX(-100%);
+          transform: translateX(-100%);
+  -webkit-transition: all .3s ease-in;
+  transition: all .3s ease-in;
+}
+
+.products-main .filtros .cont-filtros {
+  padding: 10px;
+}
+
+.products-main .filtros .cont-filtros .tipo,
+.products-main .filtros .cont-filtros .material,
+.products-main .filtros .cont-filtros .descuento {
+  margin: 10px 0;
+}
+
+.products-main .filtros .cont-filtros .tipo::after,
+.products-main .filtros .cont-filtros .material::after,
+.products-main .filtros .cont-filtros .descuento::after {
+  content: '';
+  display: block;
+  height: 2px;
+  width: 50%;
+  background: #000;
+}
+
+.products-main .filtros .cont-filtros .tipo h3,
+.products-main .filtros .cont-filtros .tipo p,
+.products-main .filtros .cont-filtros .material h3,
+.products-main .filtros .cont-filtros .material p,
+.products-main .filtros .cont-filtros .descuento h3,
+.products-main .filtros .cont-filtros .descuento p {
+  padding: 5px 0;
+}
+
+.products-main .filtros button {
+  color: #fff;
+  background-color: #383838;
+  border-radius: 5px;
+  outline: 0;
+  border: 1px solid;
+  padding: 0 24px;
+  height: 44px;
+  line-height: 44px;
+  text-align: center;
+  margin: 0 auto;
+  display: block;
+}
+
+.products-main .filtros-show {
+  -webkit-transform: translateX(0);
+          transform: translateX(0);
 }
 
 .products-main .popup-img {
@@ -379,10 +457,11 @@ footer img {
 .products-main .productos > li .slider-for img {
   max-width: 100%;
   height: 200px;
-  width: 215px;
+  width: 100%;
   -o-object-fit: cover;
      object-fit: cover;
   border-radius: 5px;
+  margin: 0 auto;
 }
 
 .products-main .productos > li .slider-nav .slick-next {
@@ -400,7 +479,7 @@ footer img {
   -o-object-fit: cover;
      object-fit: cover;
   border-radius: 5px;
-  margin: 5px 0;
+  margin: 5px auto;
 }
 
 .products-main .productos > li > img {
@@ -523,21 +602,13 @@ footer img {
         -ms-flex-align: center;
             align-items: center;
   }
-  .slider div, .slider .products-main .popup-img div::after, .products-main .popup-img .slider div::after,
-  .slider-desktop div,
-  .slider-desktop .products-main .popup-img div::after,
-  .products-main .popup-img .slider-desktop div::after {
-    display: -webkit-box !important;
-    display: -ms-flexbox !important;
-    display: flex !important;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+  main .slider .slider-item {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
   }
-  .slider div .texto, .slider .products-main .popup-img div::after .texto, .products-main .popup-img .slider div::after .texto,
-  .slider-desktop div .texto,
-  .slider-desktop .products-main .popup-img div::after .texto,
-  .products-main .popup-img .slider-desktop div::after .texto {
+  main .slider .slider-item .texto {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -546,17 +617,15 @@ footer img {
         -ms-flex-direction: column;
             flex-direction: column;
   }
-  
-  main .slider-desktop div p,
-  main .slider-desktop .products-main .popup-img div::after p,
-  .products-main .popup-img main .slider-desktop div::after p {
+  main .slider-desktop div p, main .slider-desktop .products-main .popup-img div::after p, .products-main .popup-img main .slider-desktop div::after p {
     width: 90%;
   }
-  
-  main .slider-desktop div img,
-  main .slider-desktop .products-main .popup-img div::after img,
-  .products-main .popup-img main .slider-desktop div::after img {
+  main .slider-desktop div img, main .slider-desktop .products-main .popup-img div::after img, .products-main .popup-img main .slider-desktop div::after img {
     max-width: 300px;
+  }
+  /*Productos*/
+  .products-main .productos > li {
+    width: 30%;
   }
   footer ul:first-child {
     font-size: 14px;
@@ -577,6 +646,10 @@ footer img {
   }
   main {
     height: calc(80vh - 30px);
+  }
+  /*Productos*/
+  .products-main .productos > li {
+    width: 23%;
   }
 }
 /*# sourceMappingURL=style.css.map */
