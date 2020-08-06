@@ -7,6 +7,10 @@
     list-style: none;
 }
 
+body {
+    position: relative;
+}
+
 header,
 footer {
     background-color: rgb(56, 56, 56);
@@ -222,9 +226,10 @@ footer {
 
 .products-main {
     padding: 0;
-    overflow: visible;
+    overflow: hidden;
     height: auto;
     background: none;
+    position: relative;
 
     .filtro-container {
         display: flex;
@@ -280,7 +285,7 @@ footer {
         z-index: 3;
         background: #fff;
         transform: translateX(-100%);
-        transition: all .3s ease-in;
+        transition: all .3s ease;
 
         .cont-filtros {
             padding: 10px;
@@ -331,6 +336,7 @@ footer {
         align-items: center;
         justify-content: center;
         height: 90vh;
+        width: 100%;
         background: rgba(0, 0, 0, .7);
 
         div {

@@ -8,6 +8,10 @@
   list-style: none;
 }
 
+body {
+  position: relative;
+}
+
 header,
 footer {
   background-color: #383838;
@@ -285,9 +289,10 @@ footer img {
 /*-------------------Productos-----------------------*/
 .products-main {
   padding: 0;
-  overflow: visible;
+  overflow: hidden;
   height: auto;
   background: none;
+  position: relative;
 }
 
 .products-main .filtro-container {
@@ -349,8 +354,8 @@ footer img {
   background: #fff;
   -webkit-transform: translateX(-100%);
           transform: translateX(-100%);
-  -webkit-transition: all .3s ease-in;
-  transition: all .3s ease-in;
+  -webkit-transition: all .3s ease;
+  transition: all .3s ease;
 }
 
 .products-main .filtros .cont-filtros {
@@ -412,6 +417,7 @@ footer img {
       -ms-flex-pack: center;
           justify-content: center;
   height: 90vh;
+  width: 100%;
   background: rgba(0, 0, 0, 0.7);
 }
 

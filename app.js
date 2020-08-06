@@ -7,8 +7,6 @@ $(document).ready(function () {
         //autoplay: true,
     });
 
-
-
     /*if (viewportWidth >= 1200) {
         $(".slider").slick("unslick");
     }*/
@@ -33,33 +31,30 @@ burgerContainer.addEventListener("click", () => {
     }
 });
 
-
-
-$('.slider-for').slick({
+$(".slider-for").slick({
     slidesToShow: 1,
     slidesToScroll: 1,
     arrows: false,
     fade: true,
-    asNavFor: '.slider-nav',
-
+    asNavFor: ".slider-nav",
 });
-$('.slider-nav').slick({
+$(".slider-nav").slick({
     slidesToShow: 2,
     slidesToScroll: 1,
-    asNavFor: '.slider-for',
+    asNavFor: ".slider-for",
     dots: false,
     focusOnSelect: true,
 });
 
-let imgForPopup = document.querySelectorAll('.slider-for .item img'),
-    divForPopup = document.querySelector('.popup-img');
+let imgForPopup = document.querySelectorAll(".slider-for .item img"),
+    divForPopup = document.querySelector(".popup-img");
 
 for (var i = 0; i < imgForPopup.length; i++) {
-    imgForPopup[i].addEventListener('click', function () {
+    imgForPopup[i].addEventListener("click", function () {
         let scrollY = window.scrollY,
-            body = document.querySelector('body');
+            body = document.querySelector("body");
         let imgClone = this.cloneNode();
-        let close = document.createElement('div');
+        let close = document.createElement("div");
         if (divForPopup.children.length > 0) {
             divForPopup.removeChild(divForPopup.firstElementChild);
             divForPopup.removeChild(divForPopup.firstElementChild);
@@ -74,20 +69,19 @@ for (var i = 0; i < imgForPopup.length; i++) {
 
         body.style.overflow = "hidden";
 
-        close.addEventListener('click', function () {
-            let scrollY = window.scrollY;
+        close.addEventListener("click", function () {
             divForPopup.style.display = "none";
             body.style.overflow = "initial";
         });
     });
 }
 
-let productos = document.querySelectorAll('.productos li'),
+let productos = document.querySelectorAll(".productos li"),
     aTipo = [],
     aMaterial = [],
     aDescuento = [];
 
-productos.forEach(item => {
+productos.forEach((item) => {
     armarArrays(item.dataset);
 });
 
@@ -100,17 +94,20 @@ function armarArrays(item) {
         aMaterial.push(item.material);
     }
 
-    if (aDescuento.includes(item.descuento) == false && item.descuento != "false") {
+    if (
+        aDescuento.includes(item.descuento) == false &&
+        item.descuento != "false"
+    ) {
         aDescuento.push(item.descuento);
     }
 }
 
-let filtroTipo = document.querySelector('.tipo'),
-    filtroMaterial = document.querySelector('.material'),
-    filtroDescuento = document.querySelector('.descuento');
+let filtroTipo = document.querySelector(".tipo"),
+    filtroMaterial = document.querySelector(".material"),
+    filtroDescuento = document.querySelector(".descuento");
 
 function armarFiltros(array, name) {
-    array.forEach(nombre => {
+    array.forEach((nombre) => {
         let pNombre = document.createElement("p");
         pNombre.innerHTML = nombre;
 
@@ -132,24 +129,24 @@ armarFiltros(aTipo, "tipo");
 armarFiltros(aMaterial, "material");
 armarFiltros(aDescuento, "descuento");
 
-let filtrar = document.querySelector('.filtrar'),
-    filtros = document.querySelector('.filtros');
+let filtrar = document.querySelector(".filtrar"),
+    filtros = document.querySelector(".filtros");
 
-filtrar.addEventListener('click', function () {
+filtrar.addEventListener("click", function () {
     if (filtros.classList.contains("filtros-show")) {
         filtros.classList.remove("filtros-show");
     } else {
         filtros.classList.add("filtros-show");
     }
-})
+});
 
-let ordenar = document.querySelector('.ordenar'),
-    orden = document.querySelector('.orden');
+let ordenar = document.querySelector(".ordenar"),
+    orden = document.querySelector(".orden");
 
-ordenar.addEventListener('click', function () {
+ordenar.addEventListener("click", function () {
     if (orden.classList.contains("orden-show")) {
         orden.classList.remove("orden-show");
     } else {
         orden.classList.add("orden-show");
     }
-})
+});
