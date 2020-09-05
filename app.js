@@ -1,4 +1,5 @@
 var viewportWidth = jQuery(window).width();
+/**Inicializar Slick para HOME */
 $(document).ready(function () {
     $(".slider").slick({
         dots: true,
@@ -11,7 +12,9 @@ $(document).ready(function () {
         $(".slider").slick("unslick");
     }*/
 });
+/**Fin Slick Home */
 
+/*Abrir y cerrar menu hamburguesa para mobile */
 var burgerContainer = document.querySelector(".burger-container"),
     nav = document.querySelector("nav"),
     navOpen = false,
@@ -30,6 +33,13 @@ burgerContainer.addEventListener("click", () => {
         navOpen = false;
     }
 });
+/** Fin menu hamburgesa */
+
+
+/**Inicializar slick para seccion productos 
+* TODO -> Individualizar cada slick. Que cada nav solo mueva su slider
+
+*/
 
 $(".slider-for").slick({
     slidesToShow: 1,
@@ -46,6 +56,9 @@ $(".slider-nav").slick({
     focusOnSelect: true,
 });
 
+/**Fin Slick productos */
+
+/** Crear Popup de imagen mas grande en seccion productos */
 let imgForPopup = document.querySelectorAll(".slider-for .item img"),
     divForPopup = document.querySelector(".popup-img");
 
@@ -75,16 +88,24 @@ for (var i = 0; i < imgForPopup.length; i++) {
         });
     });
 }
+/**Fin pop up imagenes grandes productos */
+
+
 
 let productos = document.querySelectorAll(".productos li"),
     aTipo = [],
     aMaterial = [],
     aDescuento = [];
 
+/** Recorrer productos para conseguir data attributes */
 productos.forEach((item) => {
     armarArrays(item.dataset);
 });
 
+/**Arma los arrays de cada filtro posible
+ * @param item recibe el dataset de cada producto
+ * pregunta si el array ya tiene al data attribute y si no lo agrega
+ */
 function armarArrays(item) {
     if (aTipo.includes(item.tipo) == false) {
         aTipo.push(item.tipo);
@@ -106,21 +127,25 @@ let filtroTipo = document.querySelector(".tipo"),
     filtroMaterial = document.querySelector(".material"),
     filtroDescuento = document.querySelector(".descuento");
 
+/** Arma los input checkbox dentro del menu de filtros
+ * @param array es el array de filtros posibles
+ * @param name es el nombre de cada filtro posible
+ */
 function armarFiltros(array, name) {
     array.forEach((nombre) => {
-        let pNombre = document.createElement("p");
-        pNombre.innerHTML = nombre;
+        let cbxFiltro = document.createElement("div");
+        cbxFiltro.innerHTML = '<input type="checkbox" id="' + nombre + '" name="' + nombre + '" value="' + nombre + '"><label for="' + nombre + '">' + nombre + '</label>';
 
         if (name == "tipo") {
-            filtroTipo.appendChild(pNombre);
+            filtroTipo.appendChild(cbxFiltro);
         }
 
         if (name == "material") {
-            filtroMaterial.appendChild(pNombre);
+            filtroMaterial.appendChild(cbxFiltro);
         }
 
         if (name == "descuento") {
-            filtroDescuento.appendChild(pNombre);
+            filtroDescuento.appendChild(cbxFiltro);
         }
     });
 }
@@ -132,10 +157,13 @@ armarFiltros(aDescuento, "descuento");
 let filtrar = document.querySelector(".filtrar"),
     filtros = document.querySelector(".filtros");
 
+/**Funcion de abrir y cerrar menu de filtros */
 filtrar.addEventListener("click", function () {
     if (filtros.classList.contains("filtros-show")) {
+
         filtros.classList.remove("filtros-show");
     } else {
+        orden.classList.remove("orden-show");
         filtros.classList.add("filtros-show");
     }
 });
@@ -143,10 +171,77 @@ filtrar.addEventListener("click", function () {
 let ordenar = document.querySelector(".ordenar"),
     orden = document.querySelector(".orden");
 
+/**Funcion de abrir y cerrar menu de orden */
 ordenar.addEventListener("click", function () {
     if (orden.classList.contains("orden-show")) {
         orden.classList.remove("orden-show");
     } else {
+        filtros.classList.remove("filtros-show");
         orden.classList.add("orden-show");
     }
 });
+
+
+let allCheckboxes = document.querySelectorAll('input[type=checkbox]'),
+    checked = [];
+/**Se fija si un checkbox fue clickeado
+ * Si el array de inputs checkeados esta vacio lo agrega
+ * si no esta vacio pero no existe en el array lo agrega
+ * si ya existe y se checkea de vuelta, se elimina
+ * llama a la funcion showProducts para mostrar u ocultar productos
+ */
+allCheckboxes.forEach(element => {
+    element.addEventListener('change', function () {
+        let checkedCbx = element.name;
+        console.log(checkedCbx);
+
+        if (checked.length == 0) {
+            checked.push(checkedCbx);
+        } else if (element.checked && checked.indexOf(checkedCbx) == -1) {
+            checked.push(checkedCbx);
+        } else {
+            let checkedCbxPos = checked.indexOf(checkedCbx);
+            console.log(checkedCbxPos);
+            checked.splice(checkedCbxPos, 1);
+        }
+        showProducts(checked);
+    })
+});
+
+/**
+ * Muestra u oculta productos dependiendo de los checkbox seleccionados
+ * @param  checked array de checkbox seleccionados
+ * si checked esta vacio, muestra todos los productos
+ * Oculta todos los products
+ * Recorre a los productos y si alguno de sus data-attributes coincide con los valores de checked,los agrega a un productArray
+ * Recorre los elementos en productArray y los muestra
+ * TODO -> Refaccionar y optimizar codigo
+ */
+
+function showProducts(checked) {
+    if (checked.length == 0) {
+        for (let a = 0; a < productos.length; a++) {
+            productos[a].style.display = "block";
+        }
+    }
+    let productArray = [];
+    for (let j = 0; j < checked.length; j++) {
+        for (let k = 0; k < productos.length; k++) {
+
+            productos[k].style.display = "none";
+
+            dataArray = productos[k].dataset;
+            if (dataArray.descuento == checked[j] || dataArray.material == checked[j] || dataArray.tipo == checked[j]) {
+                productArray.push(productos[k]);
+                console.log(productArray);
+
+                for (let l = 0; l < productArray.length; l++) {
+                    productArray[l].style.display = "block";
+                }
+            }
+        }
+
+    }
+}
+
+/**Funcionalidad de ordenar resultados */
